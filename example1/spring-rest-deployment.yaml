@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: spring-rest-deployment
+  labels:
+    app: spring-rest
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+  selector:
+    matchLabels:
+      app: spring-rest
+  template:
+    metadata:
+      labels:
+        app: spring-rest
+    spec:
+      containers:
+      - name: spring-rest
+        image: mulan101/axboot:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
