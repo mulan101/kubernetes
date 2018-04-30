@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: spring-rest
-        image: mulan101/axboot:1.0
+        image: mulan101/spring-rest:0.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
