@@ -2,6 +2,9 @@ FROM mulan101/webserver:1.0
 
 MAINTAINER zeko han (mulan101@gmail.com)
 
+# Git clone
+RUN cd /tmp && git clone https://github.com/mulan101/spring-rest.git
+
 # Build
 RUN cd /tmp/spring-rest && $MAVEN_HOME/bin/mvn -Dmaven.test.skip=true package
 

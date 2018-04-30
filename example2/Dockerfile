@@ -20,14 +20,13 @@ RUN wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache
 RUN cd /usr/local && tar xzf /tmp/apache-maven-3.1.1-bin.tar.gz
 RUN ln -s /usr/local/apache-maven-3.1.1 /usr/local/maven
 
-# Clone the application itself
-RUN yum install git -y
-RUN cd /tmp && git clone https://github.com/mulan101/spring-rest.git
-
 # Environment variables
 ENV JAVA_HOME /usr/java/latest
 ENV CATALINA_HOME /usr/local/tomcat
 ENV MAVEN_HOME /usr/local/maven
+
+# Clone the application itself
+RUN yum install git -y
 
 # tomcat start
 CMD $CATALINA_HOME/bin/startup.sh && tail -F /usr/local/tomcat/logs/catalina.out
