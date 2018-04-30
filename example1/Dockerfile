@@ -6,7 +6,7 @@ MAINTAINER zeko han (mulan101@gmail.com)
 RUN cd /tmp/spring-rest && $MAVEN_HOME/bin/mvn -Dmaven.test.skip=true package
 
 # Copy war file
-RUN cp /tmp/spring-rest/target/ROOT.war $CATALINA_HOME/webapps
+RUN cp /tmp/spring-rest/target/ROOT.war $CATALINA_HOME/webapps && rm -rf $CATALINA_HOME/webapps/ROOT 
 
 # Forward HTTP ports
 EXPOSE 8080
